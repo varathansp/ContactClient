@@ -1,0 +1,30 @@
+<h1>Contacts List</h1>
+<div>
+    Filter by: <input type="text"  placeholder="Search By Name"
+    [(ngModel)]="searchTerm" (input)="FilterContacts()"/> 
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="contacts.length==0" ><td colspan="3"> No records found</td></tr>
+        <tr *ngFor="let contact of contacts">
+            
+                <td>
+                    <a [routerLink]="[ '/contact',contact.ContactID]" routerLinkActive="active">
+                        {{contact.Name }}</a>
+                </td>
+                
+                <td>{{contact.Email}}</td>
+                <td>{{contact.Phone}}</td>
+                
+            </tr>
+        
+    </tbody>
+</table>
